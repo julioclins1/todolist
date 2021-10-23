@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>
+    Add your tasks below
+</h2>
+<hr />
+<form method="post">
+    <table>
+        <tr>
+            <td>
+                <b><label for="add">Task: </label></b>
+            </td>
+            <td>
+                <input type="text" id="add" name="add_task" placeholder="Add your task" autofocus required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b><label for="author">Author: </label></b>
+            </td>
+            <td>
+                <input type="text" id="author" placeholder="Add your name" name="author">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit">
+            </td>
+        </tr>
+    </table>
+</form>
+<br />
+<form>
+    <table>
+    {% for task in tasks %}
+    <tr>
+        <td>
+            {{task[0]}}
+        </td>
+        <td>
+            {{task[1]}}
+        </td>
+        <td>
+            |  Author: {{task[2]}}  |
+        </td>
+        <td>
+            <label for="remove">Remove?</label>
+        </td>
+        <td>
+            <input type="checkbox" id="remove" name={{task[0]}}>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <input type="submit" value="Remove">
+</form>
+<hr />
+
+{% endblock %}
